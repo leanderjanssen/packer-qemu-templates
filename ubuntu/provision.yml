@@ -1,0 +1,31 @@
+# provision.yml
+---
+
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install essential packages
+      apt:
+        update_cache: yes
+        name: "{{ item }}"
+      with_items:
+        - dbus
+        - ufw
+        - cloud-init
+    
+    - name: Change mount options /
+      mount:
+        name=/ src=/dev/mapper/system-root fstype=ext4 opts=defaults,noatime,nodiratime dump=0 passno=1 state=present
+    - name: Change mount options /home
+      mount:
+        name=/home src=/dev/mapper/system-home fstype=ext4 opts=defaults,noatime,nodiratime,nosuid,nodev dump=0 passno=2 state=present 
+    - name: Change mount options /tmp
+      mount:
+        name=/tmp src=/dev/mapper/system-tmp fstype=ext4 opts=defaults,noatime,nodiratime,nosuid,nodev,noexec dump=0 passno=2 state=present
+    - name: Change mount options /usr
+      mount:
+        name=/usr src=/dev/mapper/system-usr fstype=ext4 opts=defaults,noatime,nodiratime,nodev dump=0 passno=2 state=present
+    - name: Change mount options /var
+      mount:
+        name=/var src=/dev/mapper/system-var fstype=ext4 opts=defaults,noatime,nodiratime,nosuid,nodev dump=0 passno=2 state=present
