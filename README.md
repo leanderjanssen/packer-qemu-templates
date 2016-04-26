@@ -25,7 +25,4 @@ $ packer build ubuntu-16.04-server-amd64.json
 ##Acknowledgements
 
 * [packer-qemu-templates](https://github.com/jakobadam/packer-qemu-templates)
-* [packer-images](https://github.com/opentable/packer-images.git)
-* [packer-windows](https://github.com/joefitzgerald/packer-windows)
-* [box-cutter](https://github.com/boxcutter/)
 
