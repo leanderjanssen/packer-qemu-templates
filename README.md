@@ -5,7 +5,6 @@ relevant virtual machine images in the qcow2 format for use with KVM.
 
 In addition, Ansible is used to do some post-provision. 
 
-
 ##Status
 
 Currently the project only includes a template for Ubuntu 16.04.
